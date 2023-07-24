@@ -44,10 +44,11 @@ class CheckOutPage extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/main/div[2]/div/div[2]/div[4]/ol/li[3]/div/form/fieldset/div[1]/div/div/div[2]/div[2]/div[4]/div/button")
     WebElement buttonOrder;
 
-    @FindBy(xpath = "//*[@id=\"maincontent\"]/div[1]/h1/span")
-    WebElement message;
     @FindBy(xpath = "/html/body/div[1]/main/div[3]/div/div[2]/div/div/a")
     WebElement continueButton;
+
+    @FindBy (css = ".page-title-wrapper h1")
+    WebElement message;
 
 
     public CheckOutPage(ChromeDriver driver) {
@@ -107,7 +108,6 @@ class CheckOutPage extends BasePage {
         Actions order = new Actions(driver);
         order.click(buttonOrder).perform();
     }
-
     public String getMessage() {
         return message.getText();
 

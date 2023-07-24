@@ -52,15 +52,19 @@ public class TheBuyingProcessTest extends BaseTest {
         checkOutPage.clickMethods();
         Thread.sleep(4000);
         checkOutPage.clickNext();
-        Thread.sleep(5000);
+        Thread.sleep(4000);
         checkOutPage.clickPlaceOrder();
+        Thread.sleep(4000);
+        Assert.assertEquals(checkOutPage.getMessage(),"Thank you for your purchase!");
+
+        //go to the main page
         checkOutPage.buttonContinueShopping();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/");
+
     }
 
     @AfterMethod
     public void after (){
         driver.quit();
-    }
+ }
 
 }
