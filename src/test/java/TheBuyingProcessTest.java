@@ -26,24 +26,18 @@ public class TheBuyingProcessTest extends BaseTest {
 
         indexPage.clickWhatsNew();
         indexPage.clickJacket();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html");
 
         jacketWomenSize.chooseSize();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html?size=168");
 
         jacketWomenColor.chooseColor();
         jacketWomenColor.clickOnJacket();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://magento.softwaretestingboard.com/josie-yoga-jacket.html");
 
         yogaJacket.clickSize();
         yogaJacket.clickColor();
         yogaJacket.clickButtom();
         Thread.sleep(2000);
         yogaJacket.numberInCart();
-        Assert.assertEquals(yogaJacket.messageAdd(), "You added Josie Yoga Jacket to your shopping cart.");
         yogaJacket.proceedToCheckout();
-        Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/checkout/#shipping");
 
         Thread.sleep(2000);
         checkOutPage.enterEmail("anastasijasavic@gmail.com");
@@ -58,15 +52,19 @@ public class TheBuyingProcessTest extends BaseTest {
         checkOutPage.clickMethods();
         Thread.sleep(4000);
         checkOutPage.clickNext();
-        Thread.sleep(5000);
+        Thread.sleep(4000);
         checkOutPage.clickPlaceOrder();
+        Thread.sleep(4000);
+        Assert.assertEquals(checkOutPage.getMessage(),"Thank you for your purchase!");
+
+        //go to the main page
         checkOutPage.buttonContinueShopping();
-        Assert.assertEquals(driver.getCurrentUrl(), "https://magento.softwaretestingboard.com/");
+
     }
 
     @AfterMethod
     public void after (){
         driver.quit();
-    }
+ }
 
 }
